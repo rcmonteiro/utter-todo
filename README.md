@@ -1,81 +1,47 @@
-# Turborepo starter
+# Utter Todo
+> From Nothing to an Automated CI/CD Deploying APP on AWS
 
-This is an official starter Turborepo.
+1. **Project Setup and Organization**
+   - [ ] Set up a monorepo using Turborepo.
+   - [ ] Establish directory structure for backend and frontend.
 
-## Using this example
+2. **Backend Development with Nest.js**
+   - [ ] Implement backend APIs and business logic with Nest.js.
+   - [ ] Create entities, repositories, and services following DDD principles.
 
-Run the following command:
+3. **Frontend Development with Next.js**
+   - [ ] Develop frontend components and UI using Next.js and Shadcn/ui.
+   - [ ] Ensure responsive design and user-friendly interface.
 
-```sh
-npx create-turbo@latest
-```
+4. **Testing**
+   - [ ] Write unit tests using Vitest for backend and frontend components.
+   - [ ] Implement end-to-end tests with Playwright to validate application functionality.
 
-## What's inside?
+5. **Containerization and Deployment**
+   - [ ] Dockerize the application components.
+   - [ ] Publish Docker images to Docker Hub and AWS ECR.
+   - [ ] Configure deployment to AWS App Runner for automated deployment.
 
-This Turborepo includes the following packages/apps:
+6. **Infrastructure as Code (IaC) with Terraform**
+   - [ ] Define infrastructure requirements using Terraform.
+   - [ ] Provision AWS resources including ECR, App Runner, database, and Redis.
 
-### Apps and Packages
+7. **Continuous Integration and Continuous Deployment (CI/CD)**
+   - [ ] Set up CI/CD pipelines using GitHub Actions.
+   - [ ] Automate testing, building, and deployment processes.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+8. **Documentation and Refinement**
+   - [ ] Document architecture, design decisions, and deployment processes.
+   - [ ] Refine code based on feedback and testing results.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+9. **Final Testing and Review**
+   - [ ] Conduct final testing across all components.
+   - [ ] Perform code review to ensure best practices and quality.
 
-### Utilities
+10. **Project Completion and Launch**
+    - [ ] Complete final adjustments and optimizations.
+    - [ ] Launch the application on AWS App Runner.
+    - [ ] Celebrate the successful deployment of "Utter Todo"!
 
-This Turborepo has some additional tools already setup for you:
+Follow the project evolution on my [website](https://rcmonteiro.com/post/utter-todo-from-nothing-to-an-automated-cicd-deploying-on-aws):
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
