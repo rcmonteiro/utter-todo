@@ -1,0 +1,11 @@
+{
+  "extends": "@utter-todo/typescript-config/react.json",
+  "include": ["src/**/*", "@types/**/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+    "types": ["vitest/globals"]
+  }
+}

@@ -1,12 +1,25 @@
 {
-  "name": "domain",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@utter-todo/domain",
+  "version": "0.0.1",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run --dir src/use-cases",
+    "test:watch": "vitest --dir src/use-cases"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@utter-todo/eslint-config": "workspace:*",
+    "@utter-todo/prettier": "workspace:*",
+    "@utter-todo/typescript-config": "workspace:*",
+    "typescript": "^5.4.5",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^1.6.0"
+  },
+  "prettier": "@utter-todo/prettier",
+  "eslintConfig": {
+    "extends": [
+      "@utter-todo/eslint-config/node"
+    ]
+  }
 }

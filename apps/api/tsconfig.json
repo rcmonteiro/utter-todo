@@ -1,0 +1,12 @@
+{
+  "extends": "@utter-todo/typescript-config/nest.json",
+  "include": ["src/**/*", "@types/**/*"],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+    "types": ["vitest/globals"]
+  }
+}
