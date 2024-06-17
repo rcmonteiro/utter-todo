@@ -1,0 +1,11 @@
+{
+  "name": "@utter-todo/prettier",
+  "version": "0.0.1",
+  "main": "index.mjs",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.6.4"
+  }
+}
