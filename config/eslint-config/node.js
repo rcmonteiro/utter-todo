@@ -4,5 +4,7 @@ module.exports = {
   plugins: ['simple-import-sort'],
   rules: {
     'simple-import-sort/imports': 'error',
+    camelcase: 'off',
+    'no-useless-constructor': 'off',
   },
 }

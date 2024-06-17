@@ -2,8 +2,8 @@
 > From Nothing to an Automated CI/CD Deploying APP on AWS
 
 1. **Project Setup and Organization**
-   - [ ] Set up a monorepo using Turborepo.
-   - [ ] Establish directory structure for backend and frontend.
+   - [x] Set up a monorepo using Turborepo.
+   - [x] Establish directory structure for backend and frontend.
 
 2. **Backend Development with Nest.js**
    - [ ] Implement backend APIs and business logic with Nest.js.

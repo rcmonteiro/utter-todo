@@ -1,9 +1,7 @@
 {
-  "extends": "@utter-todo/typescript-config/react.json",
+  "extends": "@utter-todo/typescript-config/node.json",
   "include": [
     "src/**/*",
-    "@types/**/*",
-    ".next/types/**/*.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",
@@ -18,12 +16,6 @@
     "allowJs": true,
     "incremental": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
   },
   "exclude": [
     "node_modules"
