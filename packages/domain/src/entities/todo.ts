@@ -18,10 +18,6 @@ export class Todo {
     this.#createdAt = createdAt ? new Date(createdAt) : new Date()
   }
 
-  clone(): Todo {
-    return structuredClone(this)
-  }
-
   get id(): Id {
     return this.#id
   }
