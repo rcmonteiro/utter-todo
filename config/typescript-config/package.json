@@ -3,5 +3,5 @@
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
-  "files": ["react.json", "node.json", "next.json"]
+  "files": ["next.json", "node.json", "nest.json"]
 }
