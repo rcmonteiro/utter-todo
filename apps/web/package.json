@@ -6,11 +6,12 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "dev:test": "vitest --mode test",
+    "dev:test": "pnpm env:load next dev -p 50789",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "env:load": "dotenv -e .env.test --"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
@@ -20,6 +21,7 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@t3-oss/env-nextjs": "^0.10.1",
+    "@utter-todo/domain": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cookies-next": "^4.2.1",
@@ -33,7 +35,6 @@
     "react-dom": "^18.3.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "@utter-todo/domain": "workspace:*",
     "zod": "^3.23.3"
   },
   "devDependencies": {
@@ -49,6 +50,7 @@
     "@utter-todo/prettier": "workspace:*",
     "@utter-todo/typescript-config": "workspace:*",
     "@vitejs/plugin-react": "^4.3.1",
+    "dotenv-cli": "^7.4.2",
     "happy-dom": "^14.12.0",
     "postcss": "^8.4.34",
     "tailwind-variants": "^0.2.1",
