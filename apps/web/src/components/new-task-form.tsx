@@ -3,7 +3,7 @@ import { Plus } from 'lucide-react'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 
-export const NewTaskForm = () => {
+const NewTaskForm = () => {
   return (
     <form>
       <div className="mx-auto flex w-full max-w-xl items-center space-x-2 rounded-lg border-2 border-muted p-4 has-[:focus-visible]:ring-2">
@@ -14,8 +14,12 @@ export const NewTaskForm = () => {
         />
         <Button type="submit">
           <Plus className="size-4" />
+          <span className="sr-only">Create new task</span>
         </Button>
       </div>
     </form>
   )
 }
+NewTaskForm.displayName = 'NewTaskForm'
+
+export { NewTaskForm }

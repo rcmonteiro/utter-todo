@@ -1,7 +1,7 @@
 import { Checkbox } from './ui/checkbox'
 import { Label } from './ui/label'
 
-export const TaskItem = () => {
+const TaskItem = () => {
   return (
     <Label className="flex items-center justify-between space-x-4 py-4">
       <div className="flex-shrink-0">
@@ -14,3 +14,6 @@ export const TaskItem = () => {
     </Label>
   )
 }
+TaskItem.displayName = 'TaskItem'
+
+export { TaskItem }

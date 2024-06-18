@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { Button } from './ui/button'
 import { Separator } from './ui/separator'
 
-export const Sidebar = () => {
+const Sidebar = () => {
   return (
     <aside className="flex flex-col gap-4">
       <Avatar className="mx-auto size-16">
@@ -32,3 +32,6 @@ export const Sidebar = () => {
     </aside>
   )
 }
+Sidebar.displayName = 'Sidebar'
+
+export { Sidebar }

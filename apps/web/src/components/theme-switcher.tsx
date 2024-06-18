@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 
-export const ThemeSwitcher = () => {
+const ThemeSwitcher = () => {
   const { setTheme } = useTheme()
 
   return (
@@ -46,3 +46,6 @@ export const ThemeSwitcher = () => {
     </DropdownMenu>
   )
 }
+ThemeSwitcher.displayName = 'ThemeSwitcher'
+
+export { ThemeSwitcher }
