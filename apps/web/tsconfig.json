@@ -3,7 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/entities/*": ["../../packages/domain/src/entities/*"],
+      "@/common/*": ["../../packages/domain/src/common/*"],
+      "@/repositories/*": ["../../packages/domain/src/repositories/*"]
     },
     "types": ["vitest/globals"]
   },

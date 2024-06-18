@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
+    "@next/eslint-plugin-next": "^14.2.4",
     "@playwright/test": "^1.44.1",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
@@ -66,7 +67,8 @@
   "prettier": "@utter-todo/prettier",
   "eslintConfig": {
     "extends": [
-      "@utter-todo/eslint-config/next"
+      "@utter-todo/eslint-config/next",
+      "plugin:@next/next/recommended"
     ]
   }
 }

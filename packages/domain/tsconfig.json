@@ -2,7 +2,7 @@
   "extends": "@utter-todo/typescript-config/node.json",
   "include": [
     "src/**/*",
-    "tests/**/*", "_tests",
+    "tests/**/*",
   ],
   "compilerOptions": {
     "baseUrl": ".",
