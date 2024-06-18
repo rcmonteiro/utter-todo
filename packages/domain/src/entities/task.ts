@@ -1,18 +1,18 @@
 import { Id } from './value-objects/id'
 
-export type TTodo = {
+export type TTask = {
   title: string
   id?: string
   createdAt?: string
 }
 
-export class Todo {
+export class Task {
   readonly #id: Id
   readonly #createdAt: Date
   #title: string
   #completedAt?: Date
 
-  constructor({ title, id, createdAt }: TTodo) {
+  constructor({ title, id, createdAt }: TTask) {
     this.#id = id ? new Id(id) : new Id()
     this.#title = title
     this.#createdAt = createdAt ? new Date(createdAt) : new Date()
@@ -35,7 +35,11 @@ export class Todo {
   }
 
   markAsCompleted(): void {
-    this.#completedAt = new Date()
+    if (this.isCompleted()) {
+      this.#completedAt = undefined
+    } else {
+      this.#completedAt = new Date()
+    }
   }
 
   isCompleted(): boolean {

@@ -1,3 +1,4 @@
+import '@/lib/dayjs'
 import '@/styles/globals.css'
 
 import { GeistSans } from 'geist/font/sans'
@@ -13,8 +14,12 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
+    <html
+      lang="en"
+      className={`${GeistSans.variable}`}
+      suppressHydrationWarning
+    >
+      <body suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

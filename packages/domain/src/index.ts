@@ -1,16 +1,16 @@
 // Repositories
-export * from './repositories/todo-repo'
+export * from './repositories/task-repo'
 
 // Use cases
-export * from './use-cases/create-todo'
-export * from './use-cases/delete-todo'
-export * from './use-cases/fetch-todos'
-export * from './use-cases/get-todo'
-export * from './use-cases/mark-todo-as-completed'
-export * from './use-cases/update-todo'
+export * from './use-cases/create-task'
+export * from './use-cases/delete-task'
+export * from './use-cases/fetch-tasks'
+export * from './use-cases/get-task'
+export * from './use-cases/mark-task-as-completed'
+export * from './use-cases/update-task'
 
 // Entities
-export * from './entities/todo'
+export * from './entities/task'
 export * from './entities/value-objects/id'
 
 // Errors
