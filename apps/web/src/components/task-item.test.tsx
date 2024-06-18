@@ -4,7 +4,12 @@ import { TaskItem } from './task-item'
 
 describe('TaskItem - unit tests', () => {
   it('should render the TaskItem', () => {
-    const { getByRole } = render(<TaskItem />)
-    expect(getByRole('checkbox')).toBeInTheDocument()
+    const task = {
+      id: '1',
+      title: 'Task 1',
+      createdAt: '2022-01-01T00:00:00.000Z',
+    }
+    const { getByText } = render(<TaskItem task={task} />)
+    expect(getByText('Task 1')).toBeInTheDocument()
   })
 })
