@@ -11,7 +11,6 @@ export default async function TaskPage() {
   const headerItems = headers()
   const currentStatus = (headerItems.get('x-status') || 'ALL') as TStatus
   const { tasks } = await fetchTasks({ status: currentStatus })
-
   return (
     <main className="space-y-8">
       <h2 className="text-center text-4xl font-bold">

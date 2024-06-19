@@ -34,7 +34,7 @@ export class Task {
     this.#title = newTitle
   }
 
-  markAsCompleted(): void {
+  toggleCompleted(): void {
     if (this.isCompleted()) {
       this.#completedAt = undefined
     } else {

@@ -1,0 +1,14 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Pending Task",
+      "createdAt": "2024-06-19T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Completed Task",
+      "createdAt": "2024-06-19T00:00:00.000Z"
+    }
+  ]
+}

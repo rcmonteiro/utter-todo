@@ -5,10 +5,10 @@ import ky from 'ky'
 import { env } from '@/env'
 
 export const api = ky.create({
-  prefixUrl:
-    env.NODE_ENV !== 'production'
-      ? `${env.NEXT_PUBLIC_APP_URL}/api`
-      : env.NEXT_PUBLIC_API_URL,
+  prefixUrl: env.NEXT_PUBLIC_API_URL,
+  // env.NODE_ENV !== 'production'
+  //   ? `${env.NEXT_PUBLIC_APP_URL}/api`
+  //   : env.NEXT_PUBLIC_API_URL,
   hooks: {
     beforeRequest: [
       async (request) => {

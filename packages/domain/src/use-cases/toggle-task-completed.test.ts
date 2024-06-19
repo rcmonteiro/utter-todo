@@ -1,16 +1,17 @@
-import { Task } from '@/entities/task'
 import { FakeTaskRepository } from 'tests/repositories/fake-task-repo'
 
-import { ResourceNotFoundError } from './_errors/resource-not-found-error'
-import { MarkTaskAsCompletedUseCase } from './mark-task-as-completed'
+import { Task } from '@/entities/task'
 
-let sut: MarkTaskAsCompletedUseCase
+import { ResourceNotFoundError } from './_errors/resource-not-found-error'
+import { ToggleTaskCompletedUseCase } from './toggle-task-completed'
+
+let sut: ToggleTaskCompletedUseCase
 let taskRepo: FakeTaskRepository
 
 describe('Mark Task As Completed Use Case - Unit tests', () => {
   beforeEach(() => {
     taskRepo = new FakeTaskRepository()
-    sut = new MarkTaskAsCompletedUseCase(taskRepo)
+    sut = new ToggleTaskCompletedUseCase(taskRepo)
   })
 
   it('should be able to complete a task item', async () => {

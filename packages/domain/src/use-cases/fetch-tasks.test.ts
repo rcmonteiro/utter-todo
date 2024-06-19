@@ -1,5 +1,6 @@
-import { Task } from '@/entities/task'
 import { FakeTaskRepository } from 'tests/repositories/fake-task-repo'
+
+import { Task } from '@/entities/task'
 
 import { FetchTasksUseCase } from './fetch-tasks'
 
@@ -30,7 +31,7 @@ describe('Fetch Task Use Case - Unit tests', () => {
     taskRepo.items.push(new Task({ title: 'Test task 01' }))
     taskRepo.items.push(new Task({ title: 'Test task 02' }))
     const pendingTask = new Task({ title: 'Test task 03' })
-    pendingTask.markAsCompleted()
+    pendingTask.toggleCompleted()
     taskRepo.items.push(pendingTask)
 
     const result = await sut.execute({ status: 'COMPLETED' })

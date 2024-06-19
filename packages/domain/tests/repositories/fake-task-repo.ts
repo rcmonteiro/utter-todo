@@ -5,6 +5,15 @@ import type { TaskRepository, TStatus } from '@/repositories/task-repo'
 export class FakeTaskRepository implements TaskRepository {
   items: Task[] = []
 
+  private static instance: TaskRepository
+
+  public static getInstance(): TaskRepository {
+    if (!FakeTaskRepository.instance) {
+      FakeTaskRepository.instance = new FakeTaskRepository()
+    }
+    return FakeTaskRepository.instance
+  }
+
   async create(data: Task): Promise<Task> {
     this.items.push(data)
     return data

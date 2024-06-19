@@ -3,7 +3,10 @@
 import { TrashIcon } from 'lucide-react'
 import { useState, useTransition } from 'react'
 
-import { markTaskAsCompleteAction } from '@/app/tasks/actions'
+import {
+  deleteTaskAction,
+  toggleTaskCompletedAction,
+} from '@/app/tasks/actions'
 
 import { Button } from './ui/button'
 import { Checkbox } from './ui/checkbox'
@@ -26,7 +29,13 @@ export const TaskItem = ({ task }: TaskItemProps) => {
   const handleCompleteTask = (taskId: string) => {
     setChecked(!checked)
     startTransition(() => {
-      markTaskAsCompleteAction({ taskId })
+      toggleTaskCompletedAction({ taskId })
+    })
+  }
+
+  const handleDeleteTask = (taskId: string) => {
+    startTransition(() => {
+      deleteTaskAction({ taskId })
     })
   }
 
@@ -44,7 +53,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
         {task.title}
       </p>
       <p className="text-sm text-muted-foreground">{task.createdAt}</p>
-      <Button variant="ghost">
+      <Button variant="ghost" onClick={() => handleDeleteTask(task.id)}>
         <TrashIcon className="size-4" />
       </Button>
     </Label>
