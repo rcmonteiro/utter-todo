@@ -22,13 +22,6 @@ jobs:
           POSTGRESQL_PASSWORD: docker
           POSTGRESQL_DATABASE: utter-todo
 
-    env:
-      API_URL: http://localhost
-      JWT_SECRET: secret
-      API_PORT: 4000
-      DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-      DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -60,6 +53,18 @@ jobs:
           DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
           DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
+      - name: Run all e2e tests
+        run: |
+          cd apps/api
+          pnpm drizzle-kit push
+          pnpm run test:e2e
+        env:
+          API_URL: http://localhost
+          JWT_SECRET: secret
+          API_PORT: 4000
+          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
+
       - name: Install Playwright Browsers
         run: |
           cd apps/web
@@ -70,10 +75,3 @@ jobs:
         run: |
           cd apps/web
           npx playwright test
-        
-      # - uses: actions/upload-artifact@v4
-      #   if: always()
-      #   with:
-      #     name: playwright-report
-      #     path: playwright-report/
-      #     retention-days: 30
