@@ -12,6 +12,23 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: bitnami/postgresql
+        ports:
+          - 5432:5432
+        env:
+          POSTGRESQL_USERNAME: docker
+          POSTGRESQL_PASSWORD: docker
+          POSTGRESQL_DATABASE: utter-todo
+
+    env:
+      API_URL: http://localhost
+      JWT_SECRET: secret
+      API_PORT: 4000
+      DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+      DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+
     steps:
       - name: Check out code
         uses: actions/checkout@v4
