@@ -52,7 +52,13 @@ jobs:
         run: pnpm build
 
       - name: Run all unit tests
-        run: pnpm run test 
+        run: pnpm run test
+        env:
+          API_URL: http://localhost
+          JWT_SECRET: secret
+          API_PORT: 4000
+          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
       - name: Install Playwright Browsers
         run: |
