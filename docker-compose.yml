@@ -1,0 +1,49 @@
+services:
+  db:
+    container_name: utter-todo-db
+    image: bitnami/postgresql:latest
+    restart: always
+    environment:
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_USER=docker
+      - POSTGRESQL_DATABASE=utter-todo
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/bitnami/postgresql
+    # networks:
+    #   - utter-todo-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U docker"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db-test:
+    container_name: utter-todo-test-db
+    image: bitnami/postgresql:latest
+    restart: always
+    environment:
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_USER=docker
+      - POSTGRESQL_DATABASE=utter-todo-test
+    ports:
+      - 5433:5432
+    volumes:
+      - db-test-data:/bitnami/postgresql
+    # networks:
+    #   - utter-todo-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U docker"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+networks:
+  utter-todo-network:
+    driver: bridge
+
+volumes:
+  db-data:
+  db-test-data:

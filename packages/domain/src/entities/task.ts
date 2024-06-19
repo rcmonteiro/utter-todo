@@ -3,19 +3,21 @@ import { Id } from './value-objects/id'
 export type TTask = {
   title: string
   id?: string
-  createdAt?: string
+  createdAt?: string | null
+  completedAt?: string | null
 }
 
 export class Task {
   readonly #id: Id
   readonly #createdAt: Date
   #title: string
-  #completedAt?: Date
+  #completedAt?: Date | null
 
-  constructor({ title, id, createdAt }: TTask) {
+  constructor({ title, id, createdAt, completedAt }: TTask) {
     this.#id = id ? new Id(id) : new Id()
     this.#title = title
     this.#createdAt = createdAt ? new Date(createdAt) : new Date()
+    this.#completedAt = completedAt ? new Date(completedAt) : null
   }
 
   get id(): Id {
@@ -24,6 +26,10 @@ export class Task {
 
   get createdAt(): Date {
     return this.#createdAt
+  }
+
+  get completedAt(): Date | undefined | null {
+    return this.#completedAt
   }
 
   get title(): string {
@@ -36,7 +42,7 @@ export class Task {
 
   toggleCompleted(): void {
     if (this.isCompleted()) {
-      this.#completedAt = undefined
+      this.#completedAt = null
     } else {
       this.#completedAt = new Date()
     }

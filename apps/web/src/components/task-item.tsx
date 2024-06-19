@@ -22,8 +22,8 @@ type TaskItemProps = {
 }
 
 export const TaskItem = ({ task }: TaskItemProps) => {
-  const [checked, setChecked] = useState(false)
-
+  const [checked, setChecked] = useState(!!task.completedAt)
+  console.log(task.completedAt, checked)
   const [isPending, startTransition] = useTransition()
 
   const handleCompleteTask = (taskId: string) => {

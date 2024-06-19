@@ -23,5 +23,8 @@
     "extends": [
       "@utter-todo/eslint-config/node"
     ]
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0"
   }
 }

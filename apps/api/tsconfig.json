@@ -1,11 +1,14 @@
 {
   "extends": "@utter-todo/typescript-config/nest.json",
-  "include": ["src/**/*", "@types/**/*"],
+  "include": ["src/**/*", "tests/**/*", "@types/**/*"],
   "compilerOptions": {
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@/entities/*": ["../../packages/domain/src/entities/*"],
+      "@/common/*": ["../../packages/domain/src/common/*"],
+      "@/repositories/*": ["../../packages/domain/src/repositories/*"]
     },
     "types": ["vitest/globals"]
   }
