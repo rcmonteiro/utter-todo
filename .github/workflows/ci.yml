@@ -112,8 +112,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Create API as a Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
+          context: .
           push: true
           tags: rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter-todo-api:latest
       - name: Build and Push to Docker Hub
