@@ -22,4 +22,5 @@ RUN pnpm turbo build --filter=@utter-todo/api
 
 FROM base AS runner
 WORKDIR /app
-CMD [ "pnpm", "start" ]
+COPY --from=installer /app .
+CMD node apps/api/build/server.js
