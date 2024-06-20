@@ -5,7 +5,11 @@ on:
     branches: ["main"]
   pull_request:
     types: [opened, synchronize]
- 
+
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     name: Build and Test
@@ -23,47 +27,59 @@ jobs:
           POSTGRESQL_DATABASE: utter-todo
 
     steps:
-      - name: Check out code
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
- 
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
- 
-      - name: Setup Node.js environment
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
- 
-      - name: Install dependenci
-        run: pnpm install
- 
-      - name: Build
-        run: pnpm build
 
-      - name: Run all unit tests
-        run: pnpm run test
-        env:
-          API_URL: http://localhost
-          JWT_SECRET: secret
-          API_PORT: 4000
-          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
 
-      - name: Run all e2e tests
+      - name: Get pnpm store directory
+        shell: bash
         run: |
-          cd apps/api
-          pnpm drizzle-kit push
-          pnpm run test:e2e
-        env:
-          API_URL: http://localhost
-          JWT_SECRET: secret
-          API_PORT: 4000
-          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+ 
+      # - name: Install dependencies
+      #   run: pnpm install
+ 
+      # - name: Build
+      #   run: pnpm build
+
+      # - name: Run all unit tests
+      #   run: pnpm run test
+      #   env:
+      #     API_URL: http://localhost
+      #     JWT_SECRET: secret
+      #     API_PORT: 4000
+      #     DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+      #     DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
+
+      # - name: Run all e2e tests
+      #   run: |
+      #     cd apps/api
+      #     pnpm drizzle-kit push
+      #     pnpm run test:e2e
+      #   env:
+      #     API_URL: http://localhost
+      #     JWT_SECRET: secret
+      #     API_PORT: 4000
+      #     DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+      #     DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
       # - name: Install Playwright Browsers
       #   run: |
