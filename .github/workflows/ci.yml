@@ -115,6 +115,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
+          file: ./Dockerfile.api
           push: true
           tags: rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter-todo-api:latest
       - name: Build and Push to Docker Hub
