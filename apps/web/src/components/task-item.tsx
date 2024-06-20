@@ -6,8 +6,7 @@ import { useState, useTransition } from 'react'
 import {
   deleteTaskAction,
   toggleTaskCompletedAction,
-} from '@/app/tasks/actions'
-
+} from '../app/tasks/actions'
 import { Button } from './ui/button'
 import { Checkbox } from './ui/checkbox'
 import { Label } from './ui/label'

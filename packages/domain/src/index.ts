@@ -1,6 +1,6 @@
 // Repositories
-export * from './__tests__/repositories/fake-task-repo'
-export * from './repositories/task-repo'
+export { FakeTaskRepository } from './__tests__/repositories/fake-task-repo'
+export { TStatus, TaskRepository } from './repositories/task-repo'
 
 // Use cases
 export * from './use-cases/create-task'

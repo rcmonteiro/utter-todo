@@ -1,11 +1,12 @@
-import type { TStatus } from '@utter-todo/domain'
 import dayjs from 'dayjs'
 import { headers } from 'next/headers'
 
-import { NewTaskForm } from '@/components/new-task-form'
-import { Sidebar } from '@/components/sidebar'
-import { TaskItem } from '@/components/task-item'
-import { fetchTasks } from '@/http/fetch-tasks'
+import { NewTaskForm } from '../../components/new-task-form'
+import { Sidebar } from '../../components/sidebar'
+import { TaskItem } from '../../components/task-item'
+import { fetchTasks } from '../../http/fetch-tasks'
+
+type TStatus = 'ALL' | 'COMPLETED' | 'PENDING'
 
 export default async function TaskPage() {
   const headerItems = headers()

@@ -1,15 +1,14 @@
 {
   "extends": "@utter-todo/typescript-config/next.json",
+  "include": ["src", "next.config.js", "next-env.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@/entities/*": ["../../packages/domain/src/entities/*"],
-      "@/common/*": ["../../packages/domain/src/common/*"],
-      "@/repositories/*": ["../../packages/domain/src/repositories/*"]
-    },
+    "outDir": "./dist",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "types": ["vitest/globals"]
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src", "tests"],
-  "exclude": ["node_modules"]
+  }
 }

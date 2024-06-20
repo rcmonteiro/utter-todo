@@ -3,8 +3,7 @@
 import { Plus } from 'lucide-react'
 import { useTransition } from 'react'
 
-import { createTaskAction } from '@/app/tasks/actions'
-
+import { createTaskAction } from '../app/tasks/actions'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 

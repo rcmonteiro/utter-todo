@@ -1,9 +1,7 @@
-import { TStatus } from '@utter-todo/domain'
-
-import { api } from '@/lib/ky'
+import { api } from '../lib/ky'
 
 type FetchTasksRequest = {
-  status: TStatus
+  status: 'ALL' | 'COMPLETED' | 'PENDING'
 }
 
 type FetchTasksResponse = {

@@ -1,4 +1,3 @@
-import type { TStatus } from '@utter-todo/domain'
 import { LogOut } from 'lucide-react'
 import Link from 'next/link'
 
@@ -7,7 +6,7 @@ import { Button } from './ui/button'
 import { Separator } from './ui/separator'
 
 type SidebarProps = {
-  currentStatus: TStatus
+  currentStatus: 'ALL' | 'COMPLETED' | 'PENDING'
 }
 
 const Sidebar = ({ currentStatus }: SidebarProps) => {

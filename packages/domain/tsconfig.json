@@ -11,5 +11,7 @@
     "allowJs": true,
     "incremental": true,
     "esModuleInterop": true,
+    "declarationMap": true,
+    "declaration": true
   },
 }

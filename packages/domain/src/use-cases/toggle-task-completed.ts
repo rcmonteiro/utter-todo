@@ -20,7 +20,6 @@ export class ToggleTaskCompletedUseCase {
     }
 
     task.toggleCompleted()
-    console.log('task.isCompleted()', task.isCompleted())
     this.taskRepository.save(task)
 
     return right(null)

@@ -1,4 +1,4 @@
-import { api } from '@/lib/ky'
+import { api } from '../lib/ky'
 
 type ToggleTaskCompletedRequest = {
   taskId: string

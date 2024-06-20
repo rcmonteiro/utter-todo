@@ -138,9 +138,6 @@ importers:
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.4.5)(zod@3.23.8)
-      '@utter-todo/domain':
-        specifier: workspace:*
-        version: link:../../packages/domain
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0

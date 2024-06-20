@@ -3,9 +3,9 @@
 import { HTTPError } from 'ky'
 import { z } from 'zod'
 
-import { createTask } from '@/http/create-task'
-import { deleteTask } from '@/http/delete-task'
-import { toggleTaskCompleted } from '@/http/toggle-task-completed'
+import { createTask } from '../../http/create-task'
+import { deleteTask } from '../../http/delete-task'
+import { toggleTaskCompleted } from '../../http/toggle-task-completed'
 
 export const toggleTaskCompletedAction = async ({
   taskId,

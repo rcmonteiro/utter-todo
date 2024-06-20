@@ -1,5 +1,5 @@
-import '@/lib/dayjs'
-import '@/styles/globals.css'
+import '../lib/dayjs'
+import '../styles/globals.css'
 
 import { GeistSans } from 'geist/font/sans'
 import { ThemeProvider } from 'next-themes'

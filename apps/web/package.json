@@ -7,8 +7,8 @@
     "build": "next build",
     "dev": "next dev",
     "dev:test": "next dev -p 50789",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "vitest run --dir ./src/components",
+    "test:watch": "vitest --dir ./src/components",
     "lint": "next lint",
     "start": "next start",
     "env:load": "dotenv -e .env.test --"
@@ -21,7 +21,6 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@t3-oss/env-nextjs": "^0.10.1",
-    "@utter-todo/domain": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cookies-next": "^4.2.1",

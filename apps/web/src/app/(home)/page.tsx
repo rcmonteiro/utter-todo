@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-import githublogo from '@/assets/github-logo.svg'
-import { Logo } from '@/components/logo'
-import { Button } from '@/components/ui/button'
+import githublogo from '../../assets/github-logo.svg'
+import { Logo } from '../../components/logo'
+import { Button } from '../../components/ui/button'
 
 export default function HomePage() {
   return (

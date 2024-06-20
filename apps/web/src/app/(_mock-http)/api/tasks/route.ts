@@ -1,39 +1,18 @@
-import {
-  CreateTaskUseCase,
-  FakeTaskRepository,
-  FetchTasksUseCase,
-  type TStatus,
-} from '@utter-todo/domain'
 import { type NextRequest, NextResponse } from 'next/server'
+
+import TasksFileDb from '../../../../__tests__/db.json'
 
 export const GET = async (req: NextRequest) => {
   const searchParams = req.nextUrl.searchParams
-  const status = (searchParams.get('status') || 'ALL') as TStatus
-  const taskRepo = FakeTaskRepository.getInstance() as FakeTaskRepository
-  const fetchTasks = new FetchTasksUseCase(taskRepo)
-  const result = await fetchTasks.execute({ status })
+  const status = searchParams.get('status') || 'ALL'
 
-  if (result.isLeft()) {
-    return NextResponse.json({ message: 'Error' }, { status: 400 })
-  }
+  console.log(status)
 
-  const tasks = result.value.tasks
-  console.log(tasks)
+  const tasks = TasksFileDb
 
   return NextResponse.json({ tasks })
 }
 
-export const POST = async (req: NextRequest) => {
-  const { title } = await req.json()
-
-  const taskRepo = FakeTaskRepository.getInstance() as FakeTaskRepository
-  const createTask = new CreateTaskUseCase(taskRepo)
-
-  const result = await createTask.execute({ title })
-
-  if (result.isLeft()) {
-    return NextResponse.json({ message: 'Error' }, { status: 400 })
-  }
-
+export const POST = async () => {
   return new Response(null, { status: 201 })
 }

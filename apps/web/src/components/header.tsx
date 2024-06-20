@@ -1,5 +1,4 @@
-import { Logo } from '@/components/logo'
-
+import { Logo } from './logo'
 import { ThemeSwitcher } from './theme-switcher'
 
 const Header = () => {
