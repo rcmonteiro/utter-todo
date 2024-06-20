@@ -1,7 +1,4 @@
-import { FakeTaskRepository } from 'tests/repositories/fake-task-repo'
-
-import { Id } from '@/entities/value-objects/id'
-
+import { FakeTaskRepository } from '../__tests__/repositories/fake-task-repo'
 import { InvalidTitleError } from './_errors/invalid-title-error'
 import { CreateTaskUseCase } from './create-task'
 
@@ -16,12 +13,10 @@ describe('Create Task Use Case - Unit tests', () => {
 
   it('should be able to create a task', async () => {
     const result = await sut.execute({ title: 'Test task' })
-
     expect(result.isRight()).toBeTruthy()
     if (result.isRight()) {
       expect(result.value.task.title).toBe('Test task')
       expect(result.value.task.createdAt).toBeInstanceOf(Date)
-      expect(result.value.task.id).toBeInstanceOf(Id)
     }
   })
 

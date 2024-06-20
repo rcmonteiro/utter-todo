@@ -54,32 +54,32 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
  
-      # - name: Install dependencies
-      #   run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
  
-      # - name: Build
-      #   run: pnpm build
+      - name: Build
+        run: pnpm build
 
-      # - name: Run all unit tests
-      #   run: pnpm run test
-      #   env:
-      #     API_URL: http://localhost
-      #     JWT_SECRET: secret
-      #     API_PORT: 4000
-      #     DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-      #     DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
+      - name: Run all unit tests
+        run: pnpm run test
+        env:
+          API_URL: http://localhost
+          JWT_SECRET: secret
+          API_PORT: 4000
+          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
-      # - name: Run all e2e tests
-      #   run: |
-      #     cd apps/api
-      #     pnpm drizzle-kit push
-      #     pnpm run test:e2e
-      #   env:
-      #     API_URL: http://localhost
-      #     JWT_SECRET: secret
-      #     API_PORT: 4000
-      #     DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-      #     DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
+      - name: Run all e2e tests
+        run: |
+          cd apps/api
+          pnpm drizzle-kit push
+          pnpm run test:e2e
+        env:
+          API_URL: http://localhost
+          JWT_SECRET: secret
+          API_PORT: 4000
+          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
       # - name: Install Playwright Browsers
       #   run: |

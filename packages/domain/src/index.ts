@@ -1,5 +1,5 @@
 // Repositories
-export * from '../tests/repositories/fake-task-repo'
+export * from './__tests__/repositories/fake-task-repo'
 export * from './repositories/task-repo'
 
 // Use cases

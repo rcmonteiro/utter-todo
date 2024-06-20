@@ -1,4 +1,4 @@
-import type { Task } from '@/entities/task'
+import type { Task } from 'src/entities/task'
 
 export type TStatus = 'ALL' | 'COMPLETED' | 'PENDING'
 

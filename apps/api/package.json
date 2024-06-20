@@ -5,10 +5,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "start": "node build/server.js",
+    "start": "node dist/server.js",
     "test:e2e": "vitest run --dir ./src/http/controllers --no-file-parallelism",
     "test:watch": "vitest --dir ./src/http/controllers --no-file-parallelism",
-    "build": "tsup src --out-dir build",
+    "build": "tsup", 
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
   },
   "dependencies": {

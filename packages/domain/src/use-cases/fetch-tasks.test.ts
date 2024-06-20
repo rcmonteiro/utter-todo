@@ -1,7 +1,6 @@
-import { FakeTaskRepository } from 'tests/repositories/fake-task-repo'
+import { Task } from 'src/entities/task'
 
-import { Task } from '@/entities/task'
-
+import { FakeTaskRepository } from '../__tests__/repositories/fake-task-repo'
 import { FetchTasksUseCase } from './fetch-tasks'
 
 let sut: FetchTasksUseCase

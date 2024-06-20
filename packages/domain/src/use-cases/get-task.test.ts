@@ -1,6 +1,6 @@
-import { Task } from '@/entities/task'
-import { FakeTaskRepository } from 'tests/repositories/fake-task-repo'
+import { Task } from 'src/entities/task'
 
+import { FakeTaskRepository } from '../__tests__/repositories/fake-task-repo'
 import { ResourceNotFoundError } from './_errors/resource-not-found-error'
 import { GetTaskUseCase } from './get-task'
 

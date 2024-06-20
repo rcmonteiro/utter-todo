@@ -2,9 +2,13 @@
   "name": "@utter-todo/domain",
   "version": "0.0.1",
   "private": true,
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "./dist/index.js",
+  "types": ".dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
+    "build": "tsup",
     "test": "vitest run --dir src/use-cases",
     "test:watch": "vitest --dir src/use-cases"
   },
@@ -14,6 +18,7 @@
     "@utter-todo/eslint-config": "workspace:*",
     "@utter-todo/prettier": "workspace:*",
     "@utter-todo/typescript-config": "workspace:*",
+    "tsup": "^8.1.0",
     "typescript": "^5.4.5",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^1.6.0"

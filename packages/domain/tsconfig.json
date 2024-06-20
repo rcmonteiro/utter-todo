@@ -1,16 +1,10 @@
 {
   "extends": "@utter-todo/typescript-config/node.json",
-  "include": [
-    "src/**/*",
-    "tests/**/*",
-  ],
+  "include": ["."],
+  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
+    "outDir": "./dist",
     "types": [
       "vitest/globals"
     ],
@@ -18,7 +12,4 @@
     "incremental": true,
     "esModuleInterop": true,
   },
-  "exclude": [
-    "node_modules"
-  ]
 }

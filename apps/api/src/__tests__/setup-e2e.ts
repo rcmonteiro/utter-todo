@@ -1,7 +1,6 @@
 import { config } from 'dotenv'
 import { sql } from 'drizzle-orm'
-
-import { Db } from '@/http/database/db'
+import { Db } from 'src/http/database/db'
 
 config({
   path: '.env',

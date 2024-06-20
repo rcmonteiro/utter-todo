@@ -10,8 +10,7 @@ import {
   ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 
-import { env } from '@/env'
-
+import { env } from './env'
 import { errorHandler } from './error-handler'
 import { createTaskController } from './http/controllers/create-task'
 import { deleteTaskController } from './http/controllers/delete-task'

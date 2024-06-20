@@ -1,7 +1,6 @@
 import { drizzle, type NodePgDatabase } from 'drizzle-orm/node-postgres'
 import { Client } from 'pg'
-
-import { env } from '@/env'
+import { env } from 'src/env'
 
 import * as schema from './schema'
 

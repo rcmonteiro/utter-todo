@@ -1,6 +1,6 @@
-import { type Either, right } from '@/common/either'
-import { Task } from '@/entities/task'
-import type { TaskRepository, TStatus } from '@/repositories/task-repo'
+import { type Either, right } from 'src/common/either'
+import type { Task } from 'src/entities/task'
+import type { TaskRepository, TStatus } from 'src/repositories/task-repo'
 
 import { InvalidTitleError } from './_errors/invalid-title-error'
 
