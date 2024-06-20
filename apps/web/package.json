@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "dev:test": "pnpm env:load next dev -p 50789",
+    "dev:test": "next dev -p 50789",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "next lint",
