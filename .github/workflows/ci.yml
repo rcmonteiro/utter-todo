@@ -102,6 +102,6 @@ jobs:
           tags: rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter-todo-api:latest
       - name: Build and Push to Docker Hub
         run: | 
-          docker build -t rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }} ./apps/api/
+          docker build -f Dockerfile.api -t rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }} ./apps/api/
           docker push rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }}
       
