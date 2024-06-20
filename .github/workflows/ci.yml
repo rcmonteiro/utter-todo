@@ -25,6 +25,17 @@ jobs:
           POSTGRESQL_USERNAME: docker
           POSTGRESQL_PASSWORD: docker
           POSTGRESQL_DATABASE: utter-todo
+      
+      api:
+        image: rcmonteiro/utter-todo-api:latest
+        ports:
+          - 4000:4000
+        env:
+          API_URL: http://localhost
+          JWT_SECRET: secret
+          API_PORT: 4000
+          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
 
     steps:
       - name: Checkout
@@ -81,23 +92,20 @@ jobs:
           DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
           DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
-      # - name: Install Playwright Browsers
-      #   run: |
-      #     cd apps/web
-      #     pnpm add -g playwright
-      #     pnpm exec playwright install --with-deps
+      - name: Install Playwright Browsers
+        run: |
+          cd apps/web
+          pnpm add -g playwright
+          pnpm exec playwright install --with-deps
 
-      # - name: Run Playwright tests
-      #   run: |
-      #     cd apps/api
-      #     pnpm drizzle-kit push
-      #     pnpm run dev
-      #     cd ../web
-      #     npx playwright test
-      #   env:
-      #     NODE_ENV: test
-      #     NEXT_PUBLIC_API_URL: http://localhost:4000/api
-      #     NEXT_PUBLIC_APP_URL: http://localhost:50789
+      - name: Run Playwright tests
+        run: |
+          cd apps/web
+          npx playwright test
+        env:
+          NODE_ENV: test
+          NEXT_PUBLIC_API_URL: http://localhost:4000
+          NEXT_PUBLIC_APP_URL: http://localhost:50789
 
       - name: Create tag
         id: create_tag
