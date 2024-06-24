@@ -4,7 +4,6 @@ import { headers } from 'next/headers'
 import { NewTaskForm } from '../../components/new-task-form'
 import { Sidebar } from '../../components/sidebar'
 import { TaskItem } from '../../components/task-item'
-import { env } from '../../env'
 import { fetchTasks } from '../../http/fetch-tasks'
 
 type TStatus = 'ALL' | 'COMPLETED' | 'PENDING'
@@ -12,7 +11,6 @@ type TStatus = 'ALL' | 'COMPLETED' | 'PENDING'
 export const dynamic = 'force-dynamic'
 
 export default async function TaskPage() {
-  console.log('env.API_URL: ', env.API_URL)
   const headerItems = headers()
   const currentStatus = (headerItems.get('x-status') || 'ALL') as TStatus
   const { tasks } = await fetchTasks({ status: currentStatus })

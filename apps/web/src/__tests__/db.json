@@ -1,14 +1,14 @@
-{
-  "tasks": [
+[
     {
-      "id": 1,
+      "id": "1",
       "title": "Pending Task",
-      "createdAt": "2024-06-19T00:00:00.000Z"
+      "createdAt": "2024-06-19T00:00:00.000Z",
+      "completedAt": null
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Completed Task",
-      "createdAt": "2024-06-19T00:00:00.000Z"
+      "createdAt": "2024-06-19T00:00:00.000Z",
+      "completedAt": "2024-06-19T00:00:00.000Z"
     }
-  ]
-}
+]

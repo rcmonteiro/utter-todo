@@ -39,18 +39,18 @@ services:
       timeout: 5s
       retries: 5
 
-  api:
-    container_name: utter-todo-api
-    build:
-      context: .
-      dockerfile: Dockerfile.api
-    env_file: ./apps/api/.env.docker
-    ports:
-      - 4000:4000
-    depends_on:
-      - db
-    networks:
-      - utter-todo-network
+  # api:
+  #   container_name: utter-todo-api
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.api
+  #   env_file: ./apps/api/.env.docker
+  #   ports:
+  #     - 4000:4000
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - utter-todo-network
 
   # web:
   #   container_name: utter-todo-web
