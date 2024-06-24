@@ -78,6 +78,11 @@ jobs:
 
       - name: Run all unit tests
         run: pnpm run test
+        env:
+          JWT_SECRET: secret
+          API_PORT: 4000
+          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
 
       - name: Run all e2e tests
         run: |
