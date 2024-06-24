@@ -7,7 +7,7 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development'),
-    API_URL: z.string().url(),
+    API_URL: z.string().url().default('http://localhost:4000'),
     NEXT_PUBLIC_APP_URL: z.string().url().default('http://localhost:3000'),
   },
   runtimeEnv: {
