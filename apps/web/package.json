@@ -6,12 +6,12 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "dev:test": "next dev -p 50789",
+    "dev:test": "pnpm env:load next dev -p 50789",
     "test": "vitest run --dir ./src/components",
     "test:watch": "vitest --dir ./src/components",
     "lint": "next lint",
     "start": "next start",
-    "env:load": "dotenv -e .env.test --"
+    "env:load": "dotenv -e .env --"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",

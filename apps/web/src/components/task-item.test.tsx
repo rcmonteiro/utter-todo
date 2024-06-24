@@ -2,6 +2,14 @@ import { render } from '@testing-library/react'
 
 import { TaskItem } from './task-item'
 
+vitest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    pathname: '/tasks',
+    push: vi.fn(),
+    refresh: vi.fn(),
+  }),
+}))
+
 describe('TaskItem - unit tests', () => {
   it('should render the TaskItem', () => {
     const task = {

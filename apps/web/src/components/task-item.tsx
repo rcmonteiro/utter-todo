@@ -1,6 +1,7 @@
 'use client'
 
 import { TrashIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 
 import {
@@ -22,19 +23,21 @@ type TaskItemProps = {
 
 export const TaskItem = ({ task }: TaskItemProps) => {
   const [checked, setChecked] = useState(!!task.completedAt)
-  console.log(task.completedAt, checked)
   const [isPending, startTransition] = useTransition()
+  const router = useRouter()
 
   const handleCompleteTask = (taskId: string) => {
     setChecked(!checked)
     startTransition(() => {
       toggleTaskCompletedAction({ taskId })
+      router.refresh()
     })
   }
 
   const handleDeleteTask = (taskId: string) => {
     startTransition(() => {
       deleteTaskAction({ taskId })
+      router.refresh()
     })
   }
 
@@ -43,6 +46,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
       className={`flex items-center justify-between space-x-4 py-4 ${checked ? 'line-through' : ''}`}
     >
       <Checkbox
+        aria-label="Mark as completed"
         disabled={isPending}
         className="flex-shrink-0"
         checked={checked}

@@ -1,6 +1,6 @@
-import type { Task } from 'src/entities/task'
-import { Id } from 'src/entities/value-objects/id'
-import type { TaskRepository, TStatus } from 'src/repositories/task-repo'
+import type { Task } from 'src/domain/entities/task'
+import { Id } from 'src/domain/entities/value-objects/id'
+import type { TaskRepository, TStatus } from 'src/domain/repositories/task-repo'
 
 export class FakeTaskRepository implements TaskRepository {
   items: Task[] = []

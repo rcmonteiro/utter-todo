@@ -1,5 +1,5 @@
 {
-  "extends": "@utter-todo/typescript-config/nest.json",
+  "extends": "@utter-todo/typescript-config/node.json",
   "include": ["."],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {

@@ -1,6 +1,6 @@
-import { CreateTaskUseCase } from '@utter-todo/domain'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
+import { CreateTaskUseCase } from 'src/domain/use-cases/create-task'
 import { z } from 'zod'
 
 import { BadRequestError } from '../_errors/bad-request-error'

@@ -1,6 +1,6 @@
 {
   "extends": "@utter-todo/typescript-config/next.json",
-  "include": ["src", "next.config.js", "next-env.d.ts", ".next/types/**/*.ts"],
+  "include": ["src", "next.config.js", "next-env.d.ts", ".next/types/**/*.ts", "."],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "./dist",

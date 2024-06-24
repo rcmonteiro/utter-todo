@@ -7,7 +7,7 @@ FROM base AS builder
 WORKDIR /app
 RUN pnpm install -g turbo
 COPY . .
-RUN turbo prune --scope=@utter-todo/api --docker
+RUN turbo prune --scope=@utter-todo/web --docker
 
 FROM base AS installer
 WORKDIR /app
@@ -18,10 +18,10 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
-RUN pnpm turbo build --filter=@utter-todo/api
+RUN pnpm turbo build --filter=@utter-todo/web
 
 FROM base AS runner
 WORKDIR /app
 COPY --from=installer /app .
-EXPOSE 4000
-CMD node apps/api/dist/server.js
+EXPOSE 3000
+CMD cd apps/web && pnpm start

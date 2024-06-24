@@ -11,8 +11,8 @@ services:
       - 5432:5432
     volumes:
       - db-data:/bitnami/postgresql
-    # networks:
-    #   - utter-todo-network
+    networks:
+      - utter-todo-network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U docker"]
       interval: 10s
@@ -31,14 +31,41 @@ services:
       - 5433:5432
     volumes:
       - db-test-data:/bitnami/postgresql
-    # networks:
-    #   - utter-todo-network
+    networks:
+      - utter-todo-network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U docker"]
       interval: 10s
       timeout: 5s
       retries: 5
 
+  # api:
+  #   container_name: utter-todo-api
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.api
+  #   env_file: ./apps/api/.env.docker
+  #   ports:
+  #     - 4000:4000
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - utter-todo-network
+
+  # web:
+  #   container_name: utter-todo-web
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.web
+  #   env_file: ./apps/web/.env.docker
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     - api
+  #   links:
+  #     - api
+  #   networks:
+  #     - utter-todo-network
 
 networks:
   utter-todo-network:

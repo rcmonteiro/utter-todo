@@ -1,4 +1,4 @@
-import { Task } from '@utter-todo/domain'
+import { Task } from 'src/domain/entities/task'
 
 type TDrizzleTask = {
   id: string

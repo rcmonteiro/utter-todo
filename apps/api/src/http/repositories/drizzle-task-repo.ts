@@ -1,7 +1,7 @@
-import type { TaskRepository, TStatus } from '@utter-todo/domain'
-import { Task } from '@utter-todo/domain'
-import { eq } from 'drizzle-orm'
+import { eq, isNotNull, isNull } from 'drizzle-orm'
 import type { NodePgDatabase } from 'drizzle-orm/node-postgres'
+import type { Task } from 'src/domain/entities/task'
+import type { TaskRepository, TStatus } from 'src/domain/repositories/task-repo'
 
 import { DrizzleTaskMapper } from '../database/mappers/drizzle-task-mapper'
 import * as schema from '../database/schema'
@@ -35,8 +35,18 @@ export class DrizzleTaskRepository implements TaskRepository {
   }
 
   async findManyByStatus(status: TStatus): Promise<Task[]> {
-    console.log(status)
-    const tasks = await this.db.query.tasks.findMany({})
+    let filter = {}
+    if (status === 'COMPLETED') {
+      filter = {
+        where: isNotNull(schema.tasks.completedAt),
+      }
+    }
+    if (status === 'PENDING') {
+      filter = {
+        where: isNull(schema.tasks.completedAt),
+      }
+    }
+    const tasks = await this.db.query.tasks.findMany(filter)
     return tasks.map((task) => DrizzleTaskMapper.toDomain(task))
   }
 

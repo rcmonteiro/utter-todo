@@ -1,4 +1,4 @@
-import type { Task } from '@utter-todo/domain'
+import type { Task } from 'src/domain/entities/task'
 
 export abstract class TaskPresenter {
   static toHTTP(task: Task) {
