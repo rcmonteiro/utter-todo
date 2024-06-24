@@ -31,7 +31,6 @@ jobs:
         ports:
           - 4000:4000
         env:
-          API_URL: http://localhost
           JWT_SECRET: secret
           API_PORT: 4000
           DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public

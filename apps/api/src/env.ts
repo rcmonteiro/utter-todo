@@ -5,7 +5,6 @@ config()
 
 const envSchema = z.object({
   API_PORT: z.coerce.number().default(4000),
-  API_URL: z.string().url().default('http://localhost'),
   DB_URL: z.string().url(),
   DB_TEST_URL: z.string().url(),
   JWT_SECRET: z.string(),
