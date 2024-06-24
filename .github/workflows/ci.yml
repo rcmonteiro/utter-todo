@@ -122,13 +122,13 @@ jobs:
       #     pnpm exec playwright install --with-deps
 
       # - name: Run WEB e2e tests (Playwright)
-        run: |
-          cd apps/web
-          npx playwright test
-        env:
-          NODE_ENV: test
-          API_URL: http://localhost:4001
-          NEXT_PUBLIC_APP_URL: http://localhost:50789
+      #   run: |
+      #     cd apps/web
+      #     npx playwright test
+      #   env:
+      #     NODE_ENV: test
+      #     API_URL: http://localhost:4001
+      #     NEXT_PUBLIC_APP_URL: http://localhost:50789
 
       - name: Create tag
         id: create_tag
