@@ -1,4 +1,4 @@
-import { Task } from 'src/entities/task'
+import { Task } from 'src/domain/entities/task'
 
 import { FakeTaskRepository } from '../__tests__/repositories/fake-task-repo'
 import { ResourceNotFoundError } from './_errors/resource-not-found-error'

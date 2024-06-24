@@ -1,6 +1,7 @@
-import { FetchTasksUseCase } from '@utter-todo/domain'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
+import type { TStatus } from 'src/domain/repositories/task-repo'
+import { FetchTasksUseCase } from 'src/domain/use-cases/fetch-tasks'
 import { z } from 'zod'
 
 import { BadRequestError } from '../_errors/bad-request-error'
@@ -42,9 +43,11 @@ export const fetchTasksController = async (app: FastifyInstance) => {
         const db = await Db.getInstance()
         const taskRepo = new DrizzleTaskRepository(db)
         const fetchTasks = new FetchTasksUseCase(taskRepo)
+        // Get search params
+        const { status } = request.query as { status: TStatus }
 
         const result = await fetchTasks.execute({
-          status: 'ALL',
+          status,
         })
 
         if (result.isLeft()) {

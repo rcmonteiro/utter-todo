@@ -1,7 +1,6 @@
-import { type Either, left, right } from 'src/common/either'
-import { Task } from 'src/entities/task'
-import type { TaskRepository } from 'src/repositories/task-repo'
-
+import { type Either, left, right } from '../common/either'
+import { Task } from '../entities/task'
+import type { TaskRepository } from '../repositories/task-repo'
 import { InvalidTitleError } from './_errors/invalid-title-error'
 
 type CreateTaskRequest = { title: string }

@@ -1,6 +1,7 @@
 'use client'
 
 import { Plus } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 
 import { createTaskAction } from '../app/tasks/actions'
@@ -9,12 +10,15 @@ import { Input } from './ui/input'
 
 const NewTaskForm = () => {
   const [isPending, startTransition] = useTransition()
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
+    e.currentTarget.reset()
     startTransition(async () => {
       await createTaskAction(formData)
+      router.refresh()
     })
   }
 

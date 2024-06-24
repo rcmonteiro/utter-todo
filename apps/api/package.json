@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
+    "test": "vitest run --dir ./src/domain/use-cases ",
     "test:e2e": "vitest run --dir ./src/http/controllers --no-file-parallelism",
     "test:watch": "vitest --dir ./src/http/controllers --no-file-parallelism",
     "build": "tsup", 
@@ -16,7 +17,6 @@
     "@fastify/jwt": "^8.0.1",
     "@fastify/swagger": "^8.14.0",
     "@fastify/swagger-ui": "^4.0.0",
-    "@utter-todo/domain": "workspace:*",
     "dotenv-cli": "^7.4.2",
     "drizzle-orm": "^0.31.2",
     "fastify": "^4.28.0",

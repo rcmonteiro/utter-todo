@@ -130,4 +130,16 @@ jobs:
         run: | 
           docker build -f Dockerfile.api -t rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }} .
           docker push rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }}
+
+      - name: Create WEB as a Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile.web
+          push: true
+          tags: rcmonteiro/utter-todo-web:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter-todo-web:latest
+      - name: Build and Push to Docker Hub
+        run: | 
+          docker build -f Dockerfile.web -t rcmonteiro/utter-todo-web:${{ steps.create_tag.outputs.sha }} .
+          docker push rcmonteiro/utter-todo-web:${{ steps.create_tag.outputs.sha }}
       

@@ -1,6 +1,5 @@
-import { type Either, left, right } from 'src/common/either'
-import type { TaskRepository } from 'src/repositories/task-repo'
-
+import { type Either, left, right } from '../common/either'
+import type { TaskRepository } from '../repositories/task-repo'
 import { ResourceNotFoundError } from './_errors/resource-not-found-error'
 
 type DeleteTaskRequest = { taskId: string }
