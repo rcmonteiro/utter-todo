@@ -25,15 +25,15 @@ jobs:
     #   DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
 
-    # services:
-    #   postgres:
-    #     image: bitnami/postgresql
-    #     ports:
-    #       - 5432:5432
-    #     env:
-    #       POSTGRESQL_USERNAME: docker
-    #       POSTGRESQL_PASSWORD: docker
-    #       POSTGRESQL_DATABASE: utter-todo
+    services:
+      postgres:
+        image: bitnami/postgresql
+        ports:
+          - 5432:5432
+        env:
+          POSTGRESQL_USERNAME: docker
+          POSTGRESQL_PASSWORD: docker
+          POSTGRESQL_DATABASE: utter-todo
       
     #   api:
     #     image: rcmonteiro/utter-todo-api:latest
