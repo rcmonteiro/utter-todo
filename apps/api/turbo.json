@@ -6,7 +6,8 @@
     "build": {
       "outputs": [
         "dist/**"
-      ]
+      ],
+      "env": ["API_PORT", "DB_URL", "DB_TEST_URL", "JWT_SECRET"] 
     }
   }
 }

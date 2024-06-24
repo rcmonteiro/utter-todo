@@ -2,7 +2,9 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"]
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "dependsOn": ["^build"],
+      "env": ["API_PORT", "DB_URL", "DB_TEST_URL", "JWT_SECRET", "API_URL", "NEXT_PUBLIC_APP_URL"] 
     },
     "lint": {
       "dependsOn": ["^lint"]

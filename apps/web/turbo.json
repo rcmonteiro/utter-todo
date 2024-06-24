@@ -7,7 +7,8 @@
       "outputs": [
         ".next/**",
         "!.next/cache/**"
-      ]
+      ],
+      "env": ["API_URL", "NEXT_PUBLIC_APP_URL"]
     }
   }
 }

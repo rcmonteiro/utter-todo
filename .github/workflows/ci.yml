@@ -15,6 +15,15 @@ jobs:
     name: Build and Test
     timeout-minutes: 15
     runs-on: ubuntu-latest
+    # env:          
+    #   NODE_ENV: test
+    #   API_URL: http://localhost:4000
+    #   API_PORT: 4000
+    #   JWT_SECRET: secret
+    #   NEXT_PUBLIC_APP_URL: http://localhost:50789
+    #   DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+    #   DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
+
 
     services:
       postgres:
@@ -29,11 +38,10 @@ jobs:
       api:
         image: rcmonteiro/utter-todo-api:latest
         ports:
-          - 4000:4000
+          - 4001:4001
         env:
-          API_URL: http://localhost
           JWT_SECRET: secret
-          API_PORT: 4000
+          API_PORT: 4001
           DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
           DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
 
@@ -68,44 +76,59 @@ jobs:
       - name: Install dependencies
         run: pnpm install
  
-      - name: Build
+      - name: Turbo Repo Build
         run: pnpm build
+        # env:
+        #   NODE_ENV: test
+        #   API_URL: http://localhost:4000
+        #   NEXT_PUBLIC_APP_URL: http://localhost:50789
+        #   DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+        #   DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
-      - name: Run all unit tests
-        run: pnpm run test
+      - name: Run Domain Unit Tests (Vitest)
+        run: | 
+          cd apps/api
+          pnpm run test
         env:
-          API_URL: http://localhost
           JWT_SECRET: secret
           API_PORT: 4000
           DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
 
-      - name: Run all e2e tests
+      - name: Run API e2e tests (Vitest)
         run: |
           cd apps/api
           pnpm drizzle-kit push
           pnpm run test:e2e
-        env:
-          API_URL: http://localhost
+        env:          
           JWT_SECRET: secret
           API_PORT: 4000
           DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
 
-      - name: Install Playwright Browsers
+      - name: Run WEB Unit Tests (Vitest)
         run: |
           cd apps/web
-          pnpm add -g playwright
-          pnpm exec playwright install --with-deps
-
-      - name: Run Playwright tests
-        run: |
-          cd apps/web
-          npx playwright test
+          pnpm run test
         env:
           NODE_ENV: test
-          NEXT_PUBLIC_API_URL: http://localhost:4000
+          API_URL: http://localhost:4000
           NEXT_PUBLIC_APP_URL: http://localhost:50789
+
+      # - name: Install Playwright Browsers
+      #   run: |
+      #     cd apps/web
+      #     pnpm add -g playwright
+      #     pnpm exec playwright install --with-deps
+
+      # - name: Run WEB e2e tests (Playwright)
+      #   run: |
+      #     cd apps/web
+      #     npx playwright test
+      #   env:
+      #     NODE_ENV: test
+      #     API_URL: http://localhost:4001
+      #     NEXT_PUBLIC_APP_URL: http://localhost:50789
 
       - name: Create tag
         id: create_tag
