@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
-    "test": "vitest run --dir ./src/domain/use-cases ",
-    "test:e2e": "vitest run --dir ./src/http/controllers --no-file-parallelism",
+    "test": "vitest run --dir ./src/domain/use-cases --config ./vitest.config.mts",
+    "test:e2e": "vitest run --dir ./src/http/controllers --no-file-parallelism --config ./vitest.e2e.config.mts",
     "test:watch": "vitest --dir ./src/http/controllers --no-file-parallelism",
     "build": "tsup", 
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
