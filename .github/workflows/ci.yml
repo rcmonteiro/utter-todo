@@ -74,27 +74,17 @@ jobs:
           NODE_ENV: test
           API_URL: http://localhost:4000
           NEXT_PUBLIC_APP_URL: http://localhost:50789
+          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
       - name: Run all unit tests
         run: pnpm run test
-        env:
-          API_URL: http://localhost
-          JWT_SECRET: secret
-          API_PORT: 4000
-          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
       - name: Run all e2e tests
         run: |
           cd apps/api
           pnpm drizzle-kit push
           pnpm run test:e2e
-        env:
-          API_URL: http://localhost
-          JWT_SECRET: secret
-          API_PORT: 4000
-          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
       - name: Install Playwright Browsers
         run: |
