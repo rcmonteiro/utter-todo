@@ -35,15 +35,15 @@ jobs:
           POSTGRESQL_PASSWORD: docker
           POSTGRESQL_DATABASE: utter-todo
       
-    #   api:
-    #     image: rcmonteiro/utter-todo-api:latest
-    #     ports:
-    #       - 4000:4000
-    #     env:
-    #       JWT_SECRET: secret
-    #       API_PORT: 4000
-    #       DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-    #       DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+      api:
+        image: rcmonteiro/utter-todo-api:latest
+        ports:
+          - 4000:4000
+        env:
+          JWT_SECRET: secret
+          API_PORT: 4000
+          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
+          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
 
     steps:
       - name: Checkout
