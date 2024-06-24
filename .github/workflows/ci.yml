@@ -15,15 +15,6 @@ jobs:
     name: Build and Test
     timeout-minutes: 15
     runs-on: ubuntu-latest
-    # env:          
-    #   NODE_ENV: test
-    #   API_URL: http://localhost:4000
-    #   API_PORT: 4000
-    #   JWT_SECRET: secret
-    #   NEXT_PUBLIC_APP_URL: http://localhost:50789
-    #   DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-    #   DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
-
 
     services:
       postgres:
@@ -78,12 +69,6 @@ jobs:
  
       - name: Turbo Repo Build
         run: pnpm build
-        # env:
-        #   NODE_ENV: test
-        #   API_URL: http://localhost:4000
-        #   NEXT_PUBLIC_APP_URL: http://localhost:50789
-        #   DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-        #   DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public 
 
       - name: Run Domain Unit Tests (Vitest)
         run: | 
@@ -115,20 +100,20 @@ jobs:
           API_URL: http://localhost:4000
           NEXT_PUBLIC_APP_URL: http://localhost:50789
 
-      # - name: Install Playwright Browsers
-      #   run: |
-      #     cd apps/web
-      #     pnpm add -g playwright
-      #     pnpm exec playwright install --with-deps
+      - name: Install Playwright Browsers
+        run: |
+          cd apps/web
+          pnpm add -g playwright
+          pnpm exec playwright install --with-deps
 
-      # - name: Run WEB e2e tests (Playwright)
-      #   run: |
-      #     cd apps/web
-      #     npx playwright test
-      #   env:
-      #     NODE_ENV: test
-      #     API_URL: http://localhost:4001
-      #     NEXT_PUBLIC_APP_URL: http://localhost:50789
+      - name: Run WEB e2e tests (Playwright)
+        run: |
+          cd apps/web
+          npx playwright test
+        env:
+          NODE_ENV: test
+          API_URL: http://localhost:50789/api
+          NEXT_PUBLIC_APP_URL: http://localhost:50789
 
       - name: Create tag
         id: create_tag
