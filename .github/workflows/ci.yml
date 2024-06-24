@@ -38,10 +38,10 @@ jobs:
       api:
         image: rcmonteiro/utter-todo-api:latest
         ports:
-          - 4000:4000
+          - 4001:4001
         env:
           JWT_SECRET: secret
-          API_PORT: 4000
+          API_PORT: 4001
           DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
           DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
 
@@ -127,7 +127,7 @@ jobs:
           npx playwright test
         env:
           NODE_ENV: test
-          API_URL: http://localhost:4000
+          API_URL: http://localhost:4001
           NEXT_PUBLIC_APP_URL: http://localhost:50789
 
       # - name: Create tag
