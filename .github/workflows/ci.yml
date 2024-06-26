@@ -29,7 +29,7 @@ jobs:
     #       POSTGRESQL_DATABASE: utter-todo
       
     #   api:
-    #     image: rcmonteiro/utter-todo-api:latest
+    #     image: rcmonteiro/utter_todo_api:latest
     #     ports:
     #       - 4001:4001
     #     env:
@@ -140,11 +140,11 @@ jobs:
       #     context: .
       #     file: ./Dockerfile.api
       #     push: true
-      #     tags: rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter-todo-api:latest
+      #     tags: rcmonteiro/utter_todo_api:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter_todo_api:latest
       # - name: Build and Push to Docker Hub
       #   run: | 
-      #     docker build -f Dockerfile.api -t rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }} .
-      #     docker push rcmonteiro/utter-todo-api:${{ steps.create_tag.outputs.sha }}
+      #     docker build -f Dockerfile.api -t rcmonteiro/utter_todo_api:${{ steps.create_tag.outputs.sha }} .
+      #     docker push rcmonteiro/utter_todo_api:${{ steps.create_tag.outputs.sha }}
 
       # - name: Create WEB as a Docker image
       #   uses: docker/build-push-action@v6
@@ -152,11 +152,11 @@ jobs:
       #     context: .
       #     file: ./Dockerfile.web
       #     push: true
-      #     tags: rcmonteiro/utter-todo-web:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter-todo-web:latest
+      #     tags: rcmonteiro/utter_todo_web:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter_todo_web:latest
       # - name: Build and Push to Docker Hub
       #   run: | 
-      #     docker build -f Dockerfile.web -t rcmonteiro/utter-todo-web:${{ steps.create_tag.outputs.sha }} .
-      #     docker push rcmonteiro/utter-todo-web:${{ steps.create_tag.outputs.sha }}
+      #     docker build -f Dockerfile.web -t rcmonteiro/utter_todo_web:${{ steps.create_tag.outputs.sha }} .
+      #     docker push rcmonteiro/utter_todo_web:${{ steps.create_tag.outputs.sha }}
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -174,10 +174,10 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           TAG: ${{ steps.create_tag.outputs.sha }}
         run: | 
-          docker build -f Dockerfile.api -t $ECR_REGISTRY/utter-todo-api:$TAG .
-          docker tag $ECR_REGISTRY/utter-todo-api:$TAG $ECR_REGISTRY/utter-todo-api:latest
-          docker push --all-tags $ECR_REGISTRY/utter-todo-api
-          IMAGE=$(echo $ECR_REGISTRY/utter-todo-api:$TAG)
+          docker build -f Dockerfile.api -t $ECR_REGISTRY/utter_todo_api:$TAG .
+          docker tag $ECR_REGISTRY/utter_todo_api:$TAG $ECR_REGISTRY/utter_todo_api:latest
+          docker push --all-tags $ECR_REGISTRY/utter_todo_api
+          IMAGE=$(echo $ECR_REGISTRY/utter_todo_api:$TAG)
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
 
       - name: Build and Push Docker WEB Image
@@ -186,8 +186,8 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           TAG: ${{ steps.create_tag.outputs.sha }}
         run: | 
-          docker build -f Dockerfile.web -t $ECR_REGISTRY/utter-todo-web:$TAG .
-          docker tag $ECR_REGISTRY/utter-todo-web:$TAG $ECR_REGISTRY/utter-todo-web:latest
-          docker push --all-tags $ECR_REGISTRY/utter-todo-web
-          IMAGE=$(echo $ECR_REGISTRY/utter-todo-web:$TAG)
+          docker build -f Dockerfile.web -t $ECR_REGISTRY/utter_todo_web:$TAG .
+          docker tag $ECR_REGISTRY/utter_todo_web:$TAG $ECR_REGISTRY/utter_todo_web:latest
+          docker push --all-tags $ECR_REGISTRY/utter_todo_web
+          IMAGE=$(echo $ECR_REGISTRY/utter_todo_web:$TAG)
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
