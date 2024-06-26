@@ -158,3 +158,36 @@ jobs:
           docker build -f Dockerfile.web -t rcmonteiro/utter-todo-web:${{ steps.create_tag.outputs.sha }} .
           docker push rcmonteiro/utter-todo-web:${{ steps.create_tag.outputs.sha }}
       
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ECR_ROLE }}
+          aws-region: us-east-2
+  
+      - name: Login to AWS ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+  
+      - name: Build and Push Docker API Image
+        id: build-docker-api-image
+        env: 
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          TAG: ${{ steps.create_tag.outputs.sha }}
+        run: | 
+          docker build -f Dockerfile.api -t $ECR_REGISTRY/utter-todo-api:$TAG .
+          docker tag $ECR_REGISTRY/utter-todo-api:$TAG $ECR_REGISTRY/utter-todo-api:latest
+          docker push --all-tags $ECR_REGISTRY/utter-todo-api
+          IMAGE=$(echo $ECR_REGISTRY/utter-todo-api:$TAG)
+          echo "image=$IMAGE" >> $GITHUB_OUTPUT
+
+      - name: Build and Push Docker WEB Image
+        id: build-docker-web-image
+        env: 
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          TAG: ${{ steps.create_tag.outputs.sha }}
+        run: | 
+          docker build -f Dockerfile.web -t $ECR_REGISTRY/utter-todo-web:$TAG .
+          docker tag $ECR_REGISTRY/utter-todo-web:$TAG $ECR_REGISTRY/utter-todo-web:latest
+          docker push --all-tags $ECR_REGISTRY/utter-todo-web
+          IMAGE=$(echo $ECR_REGISTRY/utter-todo-web:$TAG)
+          echo "image=$IMAGE" >> $GITHUB_OUTPUT
