@@ -27,16 +27,6 @@ jobs:
           POSTGRESQL_USERNAME: docker
           POSTGRESQL_PASSWORD: docker
           POSTGRESQL_DATABASE: utter-todo
-      
-      api:
-        image: rcmonteiro/utter_todo_api:latest
-        ports:
-          - 4001:4001
-        env:
-          JWT_SECRET: secret
-          API_PORT: 4001
-          DB_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
-          DB_TEST_URL: postgresql://docker:docker@localhost:5432/utter-todo?schema=public
 
     steps:
       - name: Checkout
@@ -127,36 +117,6 @@ jobs:
         run: |
           SHA=$(echo $GITHUB_SHA | head -c7)
           echo "sha=$SHA" >> $GITHUB_OUTPUT
-
-      - name: Login on Container Registry
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Create API as a Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./Dockerfile.api
-          push: true
-          tags: rcmonteiro/utter_todo_api:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter_todo_api:latest
-      - name: Build and Push to Docker Hub
-        run: | 
-          docker build -f Dockerfile.api -t rcmonteiro/utter_todo_api:${{ steps.create_tag.outputs.sha }} .
-          docker push rcmonteiro/utter_todo_api:${{ steps.create_tag.outputs.sha }}
-
-      - name: Create WEB as a Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./Dockerfile.web
-          push: true
-          tags: rcmonteiro/utter_todo_web:${{ steps.create_tag.outputs.sha }},rcmonteiro/utter_todo_web:latest
-      - name: Build and Push to Docker Hub
-        run: | 
-          docker build -f Dockerfile.web -t rcmonteiro/utter_todo_web:${{ steps.create_tag.outputs.sha }} .
-          docker push rcmonteiro/utter_todo_web:${{ steps.create_tag.outputs.sha }}
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
