@@ -1,6 +1,8 @@
 # Utter Todo
 > From Nothing to an Automated CI/CD Deploying APP on AWS
 
+![alt text](./front-end.png)
+
 1. **Project Setup and Organization**
    - [x] Set up a monorepo using Turborepo.
    - [x] Set up ./config workspaces (eslint, prettier and typescript).
@@ -27,17 +29,17 @@
 6. **CI/CD Pipeline**
    - [x] Run all tests and build the application using GitHub Actions.
    - [x] Publish Docker images to Docker Hub and AWS ECR.
-   - [ ] Use semantic release to automate versioning and release management.
-   - [ ] Configure deployment to AWS App Runner for automated deployment.
+   - [x] Use semantic release to automate versioning and release management.
+   - [x] Configure deployment to AWS App Runner for automated deployment.
 
 7. **Infrastructure as Code (IaC) with Terraform**
-   - [ ] Define infrastructure requirements using Terraform.
-   - [ ] Provision AWS resources including ECR, App Runner, database, and Redis.
+   - [x] Define infrastructure requirements using Terraform.
+   - [x] Provision AWS resources including ECR, App Runner, database, and Redis.
 
-8. **Project Completion and Launch**
-    - [ ] Complete final adjustments and optimizations.
-    - [ ] Launch the application on AWS App Runner.
-    - [ ] Celebrate the successful deployment of "Utter Todo"!
 
-Follow the project evolution on my [website](https://rcmonteiro.com/post/utter-todo-from-nothing-to-an-automated-cicd-deploying-on-aws):
+# Running locally
+
+1. Run `pnpm install` to install dependencies on the root folder.
+2. Run docker-compose up -d to start the database
+3. Run `pnpm run dev` to start the application on port 3000 and api on port 4000.
 

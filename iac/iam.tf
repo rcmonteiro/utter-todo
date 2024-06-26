@@ -78,3 +78,28 @@ resource "aws_iam_role" "ecr_role" {
     IaC = "True"
   }
 }
+
+resource "aws_iam_role" "app_runner_role" {
+  name = "app_runner_role"
+
+  assume_role_policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Principal" : {
+          "Service" : "build.apprunner.amazonaws.com"
+        },
+        "Action" : "sts:AssumeRole"
+      }
+    ]
+  })
+
+  managed_policy_arns = [
+    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+  ]
+
+  tags = {
+    IaC = "True"
+  }
+}

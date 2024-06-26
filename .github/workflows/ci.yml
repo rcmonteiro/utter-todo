@@ -191,3 +191,37 @@ jobs:
           docker push --all-tags $ECR_REGISTRY/utter_todo_web
           IMAGE=$(echo $ECR_REGISTRY/utter_todo_web:$TAG)
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
+
+      - name: Deploy API to AWS App Runner
+        id: deploy-api-app-runner
+        uses: awslabs/amazon-app-runner-deploy@main
+        with: 
+          service: utter_todo_api
+          image: ${{ steps.build-docker-api-image.outputs.image }}
+          access-role-arn: ${{ secrets.APP_RUNNER_ROLE }}
+          region: us-east-2
+          cpu: 1
+          memory: 2
+          port: 3000
+          wait-for-service-stability-seconds: 180
+
+      - name: App Runner API Check Status
+        run: | 
+            echo "App Runner API Status: ${{ steps.deploy-api-app-runner.outputs.service-url }}"
+
+      - name: Deploy WEB to AWS App Runner
+        id: deploy-web-app-runner
+        uses: awslabs/amazon-app-runner-deploy@main
+        with: 
+          service: utter_todo_web
+          image: ${{ steps.build-docker-web-image.outputs.image }}
+          access-role-arn: ${{ secrets.APP_RUNNER_ROLE }}
+          region: us-east-2
+          cpu: 1
+          memory: 2
+          port: 3000
+          wait-for-service-stability-seconds: 180
+  
+      - name: App Runner WEB Check Status
+        run: | 
+            echo "App Runner WEB Status: ${{ steps.deploy-web-app-runner.outputs.service-url }}"

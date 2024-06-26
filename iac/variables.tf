@@ -21,3 +21,29 @@ variable "gh_app_repo" {
   type        = string
   sensitive   = true
 }
+
+variable "db_name" {
+  description = "The name of the database"
+  default     = "utter_todo"
+  type        = string
+}
+
+variable "db_user" {
+  description = "The database admin user"
+  default     = "app_user"
+}
+
+variable "db_password" {
+  description = "The database admin password"
+  sensitive   = true
+}
+
+variable "db_instance_class" {
+  description = "The instance class for RDS"
+  default     = "db.t3.micro"
+}
+
+variable "db_allocated_storage" {
+  description = "The allocated storage for RDS in GB"
+  default     = 20
+}
