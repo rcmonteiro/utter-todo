@@ -5,28 +5,28 @@
    - [x] Set up a monorepo using Turborepo.
    - [x] Set up ./config workspaces (eslint, prettier and typescript).
    - [x] Set up a ./apps/web workspace with a create t3-app + shadcn/ui + vitest
-   - [x] Set up a ./apps/api workspace with a new nest app
+   - [x] Set up a ./apps/api workspace with a new fastify api
 
 2. **Domain - Business Logic**
    - [x] Define domain entities and value objects.
    - [x] Create use cases and unit tests for business logic.
 
 3. **Frontend Development with Next.js**
-   - [ ] Develop frontend components and UI using Next.js and Shadcn/ui.
-   - [ ] Implement unit tests using Vitest for frontend components.
-   - [ ] Implement end-to-end tests with Playwright to validate frontend functionality.
+   - [x] Develop frontend components and UI using Next.js and Shadcn/ui.
+   - [x] Implement unit tests using Vitest for frontend components.
+   - [x] Implement end-to-end tests with Playwright to validate frontend functionality.
 
 4. **Backend Development with Nest.js**
-   - [ ] Implement backend APIs and business logic with Nest.js.
-   - [ ] Implement end-to-end tests with vitest to validate all backend routes.
+   - [x] Implement backend APIs and business logic with Fastify.
+   - [x] Implement end-to-end tests with vitest to validate all backend routes.
 
 5. **Docker**
-   - [ ] Create a docker-compose.yml file for local development.
-   - [ ] Set up a Dockerfile for the Web and API workspaces.
+   - [x] Create a docker-compose.yml file for local development.
+   - [x] Set up a Dockerfile for the Web and API workspaces.
 
 6. **CI/CD Pipeline**
-   - [ ] Run all tests and build the application using GitHub Actions.
-   - [ ] Publish Docker images to Docker Hub and AWS ECR.
+   - [x] Run all tests and build the application using GitHub Actions.
+   - [x] Publish Docker images to Docker Hub and AWS ECR.
    - [ ] Use semantic release to automate versioning and release management.
    - [ ] Configure deployment to AWS App Runner for automated deployment.
 
