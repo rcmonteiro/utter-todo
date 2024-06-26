@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rcmonteiro/utter-todo/compare/v1.0.0...v1.1.0) (2024-06-26)
+
+
+### Features
+
+* deploy to aws using app runner ([a680652](https://github.com/rcmonteiro/utter-todo/commit/a68065252657b6f5f0d2e18f95ee620511ff59f1))
+
 # 1.0.0 (2024-06-26)
 
 
